@@ -15,3 +15,15 @@ li {
   justify-content: center;
   align-items: center;
 }
+
+.redCls {
+  color: #f00;
+}
+
+.textCls {
+  color: orange;
+}
+
+.contentCls {
+  color: aqua;
+}

@@ -1,47 +1,45 @@
-// 引入依赖
-import React, { Component, Fragment } from "react"
-// 引入css文件
+import React, { Component } from "react"
 import "./App.css"
-// 编写类组件，并暴露
 export default class App extends Component {
-  // 生命周期函数
+  // state初始化的方式
+  // 构造函数初始化
+  // constructor() {
+  //   // 必须在this之前调用super()
+  //   super()
+  //   this.state = {
+  //     data: "2008",
+  //     msg: "大头儿子小偷爸爸"
+  //   }
+  // }
+  // 类属性的方式声明state
+  state = {
+    data: "2008",
+    msg: "黑猫警长",
+    title: ["Isssues", "Maketplace", "Pull request", "Explore"],
+    desc: ""
+  }
+  handleTabs = (v) => {
+    console.log("吾现在被点击了")
+    this.setState({
+      desc: v
+    })
+  }
   render() {
-    let titles = ['Pull request', 'Isssues', 'Maketplace', 'explore']
-    let is_boy = true
-    function fn() {
-      return "bilibili"
-    }
-    // return方法，返回一个结构标签
     return (
-      // <div>
-      //   <ul>
-      //     <li>Pull request</li>
-      //     <li>Isssues</li>
-      //     <li>Maketplace</li>
-      //     <li>explore</li>
-      //   </ul>
-      // </div>
-      // <ul>
-      //   {titles.map((v, i) => {
-      //     return <li key={i}>{v}</li>
-      //   })}
-      //   {/* {titles.forEach((value, index) => {
-      //     <li key={index}>{value}</li>
-      //   })} */}
-      // </ul>
       <div>
-        <h1>
-          蹦瞎卡拉卡
-        </h1>
-        <h2>
-          {"蹦瞎卡拉卡"}
-        </h2>
-        <h1>{1 + 1}</h1>
-        <h1>{is_boy ? 'Jack' : 'Rose'}</h1>
-        <h1>{fn()}</h1>
-        <h1>{is_boy}</h1>
+        <h1>{this.state.data}</h1>
+        <h1>{this.state.msg}</h1>
+        <ul>
+          {
+            this.state.title.map((v, i) => {
+              return <li key={i} onClick={this.handleTabs.bind(this, v)}>{v}</li>
+            })
+          }
+        </ul>
+        <div>
+          {this.state.desc}
+        </div>
       </div>
     )
-    // return "汝妻吾养之，汝放心去"
   }
 }
